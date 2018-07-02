@@ -1,1 +1,103 @@
+def menu():
+    while True:
+        print(""""
+        1. Herons formel
+        2. Tid konvertering
+        3. Siffersumma tresiffrigt heltal
+        4. Siffersumma godtyckligt antal siffror
+        5. Summering n st termer sv serien 1/1....
+        6. Beräkning av termer som behövs
+        """)
 
+        menu_insert = input("> ")
+        if menu_insert == "1":
+            heronsformel()
+        if menu_insert == "2":
+            tid()
+        if menu_insert == "3":
+            siffersumma1()
+        if menu_insert == "4":
+            siffersumma2()
+        if menu_insert == "5":
+            harmsum()
+        if menu_insert == "6":
+            antalTermer()
+
+
+def heronsformel():
+    print("Skriv sidlängderna för din triangel: ", end="")
+    a = int(input())
+    b = int(input())
+    c = int(input())
+
+    if a < b + c and b < c + a and c < a + b:
+        s = (a + b + c) / 2
+        A = (s * (s - a) * (s - b) * (s - c)) ** 0.5
+        print("Ytan är", A)
+    else:
+        print("De sidlängderna kan inte bilda triangel!")
+
+def tid():
+    sekunder = int(input("Hur många sekunder? "))
+
+    sek = sekunder % 60
+    min = (sekunder // 60) % 60
+    tim = (sekunder // 60 // 60) % 24
+    dag = (sekunder // 60 // 60 // 24)
+
+    print("Det blir", dag, "dagar,", tim, "timmar, ", min, "minuter och", sek, "sekunder")
+
+def siffersumma1():
+    talet = int(input("Skriv ditt tresiffriga tal: "))
+    if talet >= 1000:
+        print("För stort!")
+    else:
+        siffersumma = 0
+        # Första siffran (högraste)
+        siffra = talet % 10
+        siffersumma += siffra
+        talet //= 10
+        # Andra siffran
+        siffra = talet % 10
+        siffersumma += siffra
+        talet //= 10
+        # Tredje siffran
+        siffra = talet % 10
+        siffersumma += siffra
+        print("Siffersumman är ", siffersumma)
+
+def siffersumma2():
+    talet = int(input("Skriv ditt heltal > 0: "))
+
+    siffersumma = 0
+    while talet > 0:
+        siffra = talet % 10
+        siffersumma += siffra
+        talet //= 10
+
+    print("Siffersumman är ", siffersumma)
+
+def harmsum():
+    n = int(input("Hur många termer? "))
+
+    k = 0
+    sum = 0
+    while k < n:
+        k += 1
+        sum += 1 / k
+
+    print("Summan av", n, "termer =", sum)
+
+def antalTermer():
+    limit = float(input("Vilken summa vill du uppnå? "))
+
+    n = 0
+    sum = 0
+    while sum < limit:
+        n += 1
+        sum += 1 / n
+
+    print("Med", n, "termer blir summan", sum)
+
+
+menu()
