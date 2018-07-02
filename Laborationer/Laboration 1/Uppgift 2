@@ -1,1 +1,10 @@
+import math
 
+def kubsumma():
+    a = int(input("Heltal a: "))
+    b = int(input("Heltal b: "))
+
+    kubsum = (a**3)+(b**3)
+    print(kubsum)
+
+kubsumma()
