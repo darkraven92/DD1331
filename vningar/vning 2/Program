@@ -1,1 +1,119 @@
+import math
+
+def menu():
+    while True:
+        print(""""
+        1. Medelvärde exempel 1
+        2. Medelvärde exempel 2
+        3. Fakultetsberäkning
+        4. Närmevärde till sin(x)
+        5. Semifakultet
+        6. Personnummer
+        7. Byt ordning
+        8. Beräkna år
+        9. Största gemensamma delare till två tal
+        """)
+
+        menu_input = input("> ")
+        if menu_input == "1":
+            medel1()
+        if menu_input == "2":
+            medel2()
+        if menu_input == "3":
+            fakultet()
+        if menu_input == "4":
+            taylorsin()
+        if menu_input == "5":
+            semifak()
+        if menu_input == "6":
+            isFemale()
+        if menu_input == "7":
+            bytOrdfoljd()
+        if menu_input == "8":
+            tid()
+        if menu_input == "9":
+            euklides()
+
+
+
+
+
+def medel1():
+    print("Skriv dina tal, avsluta med enter (utan tal fore)")
+    sum = 0
+    antal = 0
+    while True:
+        x = input("Nästa tal:")
+        if x == "":
+            break
+        sum += float(x)
+        antal += 1
+
+    print("Medelvärdet av dina", antal, "tal blev", round(sum / antal, 2))
+
+def medel2():
+    antal = int(input("Hur manga tal har du? "))
+    sum = 0
+
+    for i in range(antal):
+        x = float(input("Nästa tal: "))
+        sum += (x)
+
+    print("Medelvärdet av dina", antal, "tal blev", round(sum / antal, 2))
+
+def fakultet():
+    prod = 1
+    for k in range(2, n + 1):
+        prod *= k
+
+    return prod
+
+def taylorsin(x):
+    sum = term = x
+    eps = 1e-10  # lite godtyckligt vald gräns
+    k = 1
+    sign = 1  # termens tecken, alternerar mellan +1 och -1
+    while abs(term) > eps:  # summera sa länge som nästa term > eps
+        k += 2
+        sign = -sign
+        term = term * x * x / (k - 1) / k  # nästa term beräknas ur föregående
+        sum += sign * term
+    return sum
+
+def semifak(n):
+    p = 1
+    for k in range(n,1,-2):    # Gå från n med steg -2 ned till 1
+        p *= k                 # Sista värdet som används kommer
+                               # att vara 3 (udda n) eller 2 (jämnt n)
+    return p                   # Repetitionen stannar innan gränsen nås
+
+def isFemale(pnr):
+    dig = int(pnr[9])
+    return dig % 2 == 0
+
+def bytOrdfoljd(s):
+    k = 0
+    for i in range(len(s)):
+        if s[i] == ' ':
+            k = i
+            break
+
+    return s[i+1:] + ' ' + s[:i]
+
+def tid(studstat,aktuelltar):
+    y = int(studstat[2:])
+    if y > 12:
+        return aktuelltar - (1900+y)
+    else:
+        return aktuelltar - (2000+y)
+
+
+def euklides(a,b):
+    while b!=0:
+        r = a%b
+        a = b
+        b = r
+    return a
+menu()
+
 
